@@ -3,6 +3,7 @@ function Puzzle() {
 
     
 }
+var numPiezas = 4;
 
 Puzzle.prototype.isResuelto=function(){
         var resuelto=true;
@@ -66,3 +67,49 @@ Puzzle.prototype.onDragOverPiezaSinPoner=function(event){
 
 
         
+/*
+ * getNumHuecoCaja = function(numPieza) : dónde está la pieza en la caja
+ * getNumHuecoTablero = function(numPieza) : 
+ * isLibreHuecoTablero = function(posicion) : devuelve true o false si la posición esta libre, se puede o no
+ * isAllowColocarPieza = function (numPieza, posicion) : T/F si se puede poner o no, ej: puede haber ya una pieza
+ * isAllowQuitarPieza = function(numPieza) : si ya está quitada (en la caja) no puedes quitarla
+ * isColocadaPieza= function (numPieza, posicion): la pieza está puesta
+ * isQuitadaPieza= function (numPieza): la pieza está quitada
+ * colocarPieza: 
+ * quitarPieza: 
+ * reset = function();
+ * isResuelto = devuelve true o false
+ * 
+ */
+
+Puzzle.prototype.getNumHuecoCaja =  function(numPieza){
+    if(numPieza<1){
+        throw "";
+    }
+    if(numPieza > this.numPiezas){
+        throw "";
+    }
+    if(numPieza){
+        throw "";
+    }
+};
+
+Puzzle.prototype.getNumHuecoTablero = function(numPieza){
+    
+} ;
+Puzzle.prototype.isLibreHuecoTablero = function(posicion){
+    
+};
+
+Puzzle.prototype.isAllowColocarPieza = function(numPieza, posicion){
+    
+};
+Puzzle.prototype.isAllowQuitarPieza = function(numPieza){
+    
+    
+};
+Puzzle.prototype.isColocadaPieza = function(numPieza, posicion){};
+Puzzle.prototype.isQuitadaPieza = function(numPieza){};
+Puzzle.prototype.colocarPieza = function(numPieza, posicion){};
+Puzzle.prototype.quitarPieza = function(numPieza){};
+Puzzle.prototype.reset = function(){};
