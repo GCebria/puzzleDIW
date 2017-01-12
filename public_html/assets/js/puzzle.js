@@ -1,72 +1,74 @@
-function Puzzle() {
-    var estado=[-1,-2,-3,4];
+function Puzzle(numeroPiezas) {
+    var estado = [-1, -2, -3, -4];
+    this.numPiezas = numeroPiezas;
 
-    
+
 }
-var numPiezas = 4;
+var numPiezas;
 
-Puzzle.prototype.isResuelto=function(){
-        var resuelto=true;
-        for (var i=0;i<this.estado.length;i++){
-            if(this.estado.pieza[i] !==i+1){
-                resuelto = false;
-            }
+Puzzle.prototype.isResuelto = function () {
+    var resuelto = true;
+    for (var i = 0; i < this.estado.length; i++) {
+        if (this.estado.pieza[i] !== i + 1) {
+            resuelto = false;
+        }
 
-                return resuelto;
-            };
-   
-};
-
-Puzzle.prototype.onDragStartPiezaSinPoner=function(event){
-    event.dataTransfer.setData("text",event.target.id);
+        return resuelto;
+    }
+    ;
 
 };
 
-Puzzle.prototype.onDragStartPiezaPuesta=function(event){
-    event.dataTransfer.setData("text",event.target.id);
+Puzzle.prototype.onDragStartPiezaSinPoner = function (event) {
+    event.dataTransfer.setData("text", event.target.id);
+
 };
 
-Puzzle.prototype.onDropPiezaPuesta=function(event){
+Puzzle.prototype.onDragStartPiezaPuesta = function (event) {
+    event.dataTransfer.setData("text", event.target.id);
+};
+
+Puzzle.prototype.onDropPiezaPuesta = function (event) {
     event.preventDefault();
-    var destElement=document.getElementById(event.dataTransfer.getData("text"));
-    var originElement=document.getElementById(event.target.id);
-    
-    var destSrc=destElement.src;
-    var originSrc=originElement.src;
-    
+    var destElement = document.getElementById(event.dataTransfer.getData("text"));
+    var originElement = document.getElementById(event.target.id);
+
+    var destSrc = destElement.src;
+    var originSrc = originElement.src;
+
     destElement.src = originSrc;
     originElement.src = destSrc;
-    
-    
+
+
 
 
 };
-Puzzle.prototype.onDropPiezaSinPoner=function(event){
+Puzzle.prototype.onDropPiezaSinPoner = function (event) {
     event.preventDefault();
-    var destElement=document.getElementById(event.dataTransfer.getData("text"));
-    var originElement=document.getElementById(event.target.id);
-    
-    var destSrc=destElement.src;
-    var originSrc=originElement.src;
-    
+    var destElement = document.getElementById(event.dataTransfer.getData("text"));
+    var originElement = document.getElementById(event.target.id);
+
+    var destSrc = destElement.src;
+    var originSrc = originElement.src;
+
     destElement.src = originSrc;
     originElement.src = destSrc;
 };
 
-Puzzle.prototype.onDragOverPiezaPuesta=function(event){
+Puzzle.prototype.onDragOverPiezaPuesta = function (event) {
     event.preventDefault();
 
 
 };
-Puzzle.prototype.onDragOverPiezaSinPoner=function(event){
+Puzzle.prototype.onDragOverPiezaSinPoner = function (event) {
     event.preventDefault();
 };
 
 
-         var puzzle = new Puzzle();   
+var puzzle = new Puzzle(4);
 
 
-        
+
 /*
  * getNumHuecoCaja = function(numPieza) : dónde está la pieza en la caja
  * getNumHuecoTablero = function(numPieza) : 
@@ -82,34 +84,64 @@ Puzzle.prototype.onDragOverPiezaSinPoner=function(event){
  * 
  */
 
-Puzzle.prototype.getNumHuecoCaja =  function(numPieza){
-    if(numPieza<1){
+Puzzle.prototype.getNumHuecoCaja = function (numPieza) {
+    if (numPieza < 1) {
         throw "";
     }
-    if(numPieza > this.numPiezas){
+    if (numPieza > this.numPiezas) {
         throw "";
     }
-    if(numPieza){
+    if (numPieza == 0) {
         throw "";
     }
 };
 
-Puzzle.prototype.getNumHuecoTablero = function(numPieza){
-    
-} ;
-Puzzle.prototype.isLibreHuecoTablero = function(posicion){
-    
+Puzzle.prototype.getNumHuecoTablero = function (numPieza) {
+
+};
+Puzzle.prototype.getNumPiezas = function () {
+    return this.numPiezas;
 };
 
-Puzzle.prototype.isAllowColocarPieza = function(numPieza, posicion){
-    
+Puzzle.prototype.isLibreHuecoTablero = function (posicion) {
+    var valido = true; 
+    for (var i = 0; i < this.estado.length; i++) {
+        if (estado[i]==posicion) {
+            valido = false;
+        }
+        return valido; 
+    }
 };
-Puzzle.prototype.isAllowQuitarPieza = function(numPieza){
-    
-    
+
+Puzzle.prototype.isAllowColocarPieza = function (numPieza, posicion) {
+    return Puzzle.prototype.isLibreHuecoTablero(posicion); 
 };
-Puzzle.prototype.isColocadaPieza = function(numPieza, posicion){};
-Puzzle.prototype.isQuitadaPieza = function(numPieza){};
-Puzzle.prototype.colocarPieza = function(numPieza, posicion){};
-Puzzle.prototype.quitarPieza = function(numPieza){};
-Puzzle.prototype.reset = function(){};
+
+Puzzle.prototype.isAllowQuitarPieza = function (numPieza) {
+    var valido = true; 
+    for (var i = 0; i < this.estado.length; i++) {
+        if (estado[i]==posicion) {
+            valido = false;
+        }
+        return valido; 
+    }
+};
+
+Puzzle.prototype.isColocadaPieza = function (numPieza, posicion) {
+
+};
+
+Puzzle.prototype.isQuitadaPieza = function (numPieza) {
+
+};
+
+Puzzle.prototype.colocarPieza = function (numPieza, posicion) {
+
+};
+
+Puzzle.prototype.quitarPieza = function (numPieza) {
+
+};
+Puzzle.prototype.reset = function () {
+
+};
