@@ -84,64 +84,96 @@ var puzzle = new Puzzle(4);
  * 
  */
 
-Puzzle.prototype.getNumHuecoCaja = function (numPieza) {
-    if (numPieza < 1) {
-        throw "";
+Puzzle.prototype.getNumPosicionPiezaEnCaja = function (numPieza) {
+    if (numPieza > 0 ){
+        throw "No esta en la caja";
     }
-    if (numPieza > this.numPiezas) {
-        throw "";
+    else{
+       return this.estado[numPieza-1];
     }
-    if (numPieza == 0) {
-        throw "";
+};
+Puzzle.prototype.getNumPosicionPiezaEnTablero = function (numPieza) {
+   if (numPieza < 0){
+        throw "No esta en el tablero";
+    }
+    else{
+       return this.estado[numPieza-1];
     }
 };
 
-Puzzle.prototype.getNumHuecoTablero = function (numPieza) {
 
-};
+
 Puzzle.prototype.getNumPiezas = function () {
     return this.numPiezas;
 };
 
 Puzzle.prototype.isLibreHuecoTablero = function (posicion) {
-    var valido = true; 
-    for (var i = 0; i < this.estado.length; i++) {
-        if (estado[i]==posicion) {
+    var valido = true;
+    for (var i = 1; i <= this.estado.length; i++) {
+        if (this.estado[i] === posicion) {
             valido = false;
         }
-        return valido; 
+        return valido;
     }
 };
 
-Puzzle.prototype.isAllowColocarPieza = function (numPieza, posicion) {
-    return Puzzle.prototype.isLibreHuecoTablero(posicion); 
+Puzzle.prototype.isPermitidoColocarPieza = function (numPieza, posicion) {
+    if (Puzzle.prototype.isColocadaPieza (numPieza, posicion) === true ){
+        throw  "No se puede volver a colocar";
+    }else{Puzzle.prototype.isLibreHuecoTablero(posicion);
+    
+    }
+    
 };
 
-Puzzle.prototype.isAllowQuitarPieza = function (numPieza) {
-    var valido = true; 
-    for (var i = 0; i < this.estado.length; i++) {
-        if (estado[i]==posicion) {
-            valido = false;
-        }
-        return valido; 
+Puzzle.prototype.isPermitidoQuitarPieza = function (numPieza) {
+    var valido = false;
+    if (this.estado[numPieza-1] > 0) {
+        valido = true;
     }
+    return valido;
 };
 
 Puzzle.prototype.isColocadaPieza = function (numPieza, posicion) {
-
+    var valido = false;
+    if (this.estado[numPieza-1] === posicion) {
+        valido = true;
+    }
+    return valido;
 };
 
 Puzzle.prototype.isQuitadaPieza = function (numPieza) {
-
+    var valido = false;
+    if (this.estado[numPieza-1] < 0) {
+        valido = true;
+    }
+    return valido;
 };
 
 Puzzle.prototype.colocarPieza = function (numPieza, posicion) {
-
+    if (Puzzle.prototype.isPermitidoColocarPieza (numPieza, posicion) == true){
+    this.estado[numPieza-1] = posicion;
+    }else{
+        throw "No se puede colocar la pieza";
+    }
 };
 
 Puzzle.prototype.quitarPieza = function (numPieza) {
+    if (Puzzle.prototype.isPermitidoQuitarPieza== true){
 
+    for (var i = 1; i <= this.numPiezas; i++) {
+        if (numPieza === i) {
+            this.estado[numPieza-1] = i*-1;
+        }
+    }
+    }else{
+        throw "No se puede quitar la pieza";
+    }
 };
 Puzzle.prototype.reset = function () {
-
+    var reinicio = -1;
+    for (var i = 1; i <= this.estado.length; i++) {
+        this.estado[reinicio];
+        reinicio--;
+    }
 };
