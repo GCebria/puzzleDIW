@@ -13,26 +13,28 @@ and open the template in the editor.
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <!--SCRIPTS-->
+       
         <script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="vendor/jquery/jquery-3.1.1.min.js" type="text/javascript"></script>
-        <script src="assets/js/puzzle.js" type="text/javascript"></script>
+        <script src="assets/js/puzzle.js" type="text/javascript"></script> 
+        <script src="puzzle_test.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="container">
             <div class="row">
-                <div id="divnopuesto1" class="col-xs-2 col-xs-offset-2" ondrop="puzzle.onDropPiezaSinPoner(event)" ondragover="puzzle.onDragOverPiezaSinPoner(event)"><img class="puzzle__pieces" id="piezaNoPuesta1" ondragstart="puzzle.onDragStartPiezaSinPoner(event)" src="assets/images/grid1.png" draggable="true" alt=""/></div>
-                <div id="divnopuesto2" class="col-xs-2" ondrop="puzzle.onDropPiezaSinPoner(event)" ondragover="puzzle.onDragOverPiezaSinPoner(event)" ><img class="puzzle__pieces" id="piezaNoPuesta2" ondragstart="puzzle.onDragStartPiezaSinPoner(event)"   src="assets/images/grid2.png"  draggable="true" alt="" /></div>
-                <div id="divnopuesto3" class="col-xs-2" ondrop="puzzle.onDropPiezaSinPoner(event)" ondragover="puzzle.onDragOverPiezaSinPoner(event)"><img class="puzzle__pieces" id="piezaNoPuesta3" ondragstart="puzzle.onDragStartPiezaSinPoner(event)"  src="assets/images/grid3.png" draggable="true" alt=""/></div>
-                <div id="divnopuesto4" class="col-xs-2" ondrop="puzzle.onDropPiezaSinPoner(event)" ondragover="puzzle.onDragOverPiezaSinPoner(event)" ><img class="puzzle__pieces" id="piezaNoPuesta4" ondragstart="puzzle.onDragStartPiezaSinPoner(event)"   src="assets/images/grid4.png" draggable="true" alt="" /></div>
+                <div id="divnopuesto1" class="col-xs-2 col-xs-offset-2" idHuecoCaja="1" ondrop="puzzle.onDropPiezaSinPoner(event)" ondragover="puzzle.onDragOverPiezaSinPoner(event)"><img class="puzzle__pieces" id="piezaNoPuesta1" idPieza="1" ondragstart="puzzle.onDragStartPiezaSinPoner(event)" src="assets/images/grid1.png" draggable="true" alt=""/></div>
+                <div id="divnopuesto2" class="col-xs-2" idHuecoCaja="2" ondrop="puzzle.onDropPiezaSinPoner(event)" ondragover="puzzle.onDragOverPiezaSinPoner(event)" ><img class="puzzle__pieces" id="piezaNoPuesta2" idPieza="2" ondragstart="puzzle.onDragStartPiezaSinPoner(event)"   src="assets/images/grid2.png"  draggable="true" alt="" /></div>
+                <div id="divnopuesto3" class="col-xs-2" idHuecoCaja="3" ondrop="puzzle.onDropPiezaSinPoner(event)" ondragover="puzzle.onDragOverPiezaSinPoner(event)"><img class="puzzle__pieces" id="piezaNoPuesta3" idPieza="3" ondragstart="puzzle.onDragStartPiezaSinPoner(event)"  src="assets/images/grid3.png" draggable="true" alt=""/></div>
+                <div id="divnopuesto4" class="col-xs-2" idHuecoCaja="4" ondrop="puzzle.onDropPiezaSinPoner(event)" ondragover="puzzle.onDragOverPiezaSinPoner(event)" ><img class="puzzle__pieces" id="piezaNoPuesta4" idPieza="4" ondragstart="puzzle.onDragStartPiezaSinPoner(event)"   src="assets/images/grid4.png" draggable="true" alt="" /></div>
             </div>
             
             <div class="row" >
-                <div id="divpuesto1" class="col-xs-4 col-xs-offset-2 puzzle__table" ondrop="puzzle.onDropPiezaPuesta(event)" ondragover="puzzle.onDragOverPiezaPuesta(event)" ><img class="puzzle__table__image" id="piezaPuesta1" ondragstart="puzzle.onDragStartPiezaPuesta(event)"  src="assets/images/prepuzzle.png" draggable="true" alt=""/></div>
-                <div id="divpuesto2" class="col-xs-4 puzzle__table " ondrop="puzzle.onDropPiezaPuesta(event)" ondragover="puzzle.onDragOverPiezaPuesta(event)" ><img class="puzzle__table__image" id="piezaPuesta2" ondragstart="puzzle.onDragStartPiezaPuesta(event)"  src="assets/images/prepuzzle.png" draggable="true" alt="" /></div>
+                <div id="divpuesto1" class="col-xs-4 col-xs-offset-2 puzzle__table" idHuecoTablero="1" ondrop="puzzle.onDropPiezaPuesta(event)" ondragover="puzzle.onDragOverPiezaPuesta(event)" ><img class="puzzle__table__image" id="piezaPuesta1" idPieza="1" ondragstart="puzzle.onDragStartPiezaPuesta(event)"  src="assets/images/prepuzzle.png" draggable="true" alt=""/></div>
+                <div id="divpuesto2" class="col-xs-4 puzzle__table " idHuecoTablero="2" ondrop="puzzle.onDropPiezaPuesta(event)" ondragover="puzzle.onDragOverPiezaPuesta(event)" ><img class="puzzle__table__image" id="piezaPuesta2" idPieza="2" ondragstart="puzzle.onDragStartPiezaPuesta(event)"  src="assets/images/prepuzzle.png" draggable="true" alt="" /></div>
             </div>
             <div class="row">
-                <div id="divpuesto3" class="col-xs-4 col-xs-offset-2 puzzle__table " ondrop="puzzle.onDropPiezaPuesta(event)" ondragover="puzzle.onDragOverPiezaPuesta(event)" ><img class="puzzle__table__image" id="piezaPuesta3" ondragstart="puzzle.onDragStartPiezaPuesta(event)"  src="assets/images/prepuzzle.png" draggable="true" alt="" /></div>
-                <div id="divpuesto4" class="col-xs-4 puzzle__table " ondrop="puzzle.onDropPiezaPuesta(event)" ondragover="puzzle.onDragOverPiezaPuesta(event)" ><img class="puzzle__table__image" id="piezaPuesta4" ondragstart="puzzle.onDragStartPiezaPuesta(event)"  src="assets/images/prepuzzle.png" draggable="true" alt="" /></div>                
+                <div id="divpuesto3" class="col-xs-4 col-xs-offset-2 puzzle__table " idHuecoTablero="3" ondrop="puzzle.onDropPiezaPuesta(event)" ondragover="puzzle.onDragOverPiezaPuesta(event)" ><img class="puzzle__table__image" id="piezaPuesta3" idPieza="3" ondragstart="puzzle.onDragStartPiezaPuesta(event)"  src="assets/images/prepuzzle.png" draggable="true" alt="" /></div>
+                <div id="divpuesto4" class="col-xs-4 puzzle__table " idHuecoTablero="4" ondrop="puzzle.onDropPiezaPuesta(event)" ondragover="puzzle.onDragOverPiezaPuesta(event)" ><img class="puzzle__table__image" id="piezaPuesta4" idPieza="4" ondragstart="puzzle.onDragStartPiezaPuesta(event)"  src="assets/images/prepuzzle.png" draggable="true" alt="" /></div>                
             </div>
         </div>
     </body>

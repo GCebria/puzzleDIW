@@ -70,13 +70,13 @@ var puzzle = new Puzzle(4);
 
 
 /*
- * getNumHuecoCaja = function(numPieza) : dónde está la pieza en la caja
- * getNumHuecoTablero = function(numPieza) : 
+ * getNumHuecoCaja = function(idPieza) : dónde está la pieza en la caja
+ * getNumHuecoTablero = function(idPieza) : 
  * isLibreHuecoTablero = function(posicion) : devuelve true o false si la posición esta libre, se puede o no
- * isAllowColocarPieza = function (numPieza, posicion) : T/F si se puede poner o no, ej: puede haber ya una pieza
- * isAllowQuitarPieza = function(numPieza) : si ya está quitada (en la caja) no puedes quitarla
- * isColocadaPieza= function (numPieza, posicion): la pieza está puesta
- * isQuitadaPieza= function (numPieza): la pieza está quitada
+ * isAllowColocarPieza = function (idPieza, posicion) : T/F si se puede poner o no, ej: puede haber ya una pieza
+ * isAllowQuitarPieza = function(idPieza) : si ya está quitada (en la caja) no puedes quitarla
+ * isColocadaPieza= function (idPieza, posicion): la pieza está puesta
+ * isQuitadaPieza= function (idPieza): la pieza está quitada
  * colocarPieza: 
  * quitarPieza: 
  * reset = function();
@@ -84,20 +84,20 @@ var puzzle = new Puzzle(4);
  * 
  */
 
-Puzzle.prototype.getNumPosicionPiezaEnCaja = function (numPieza) {
-    if (numPieza > 0 ){
+Puzzle.prototype.getNumPosicionPiezaEnCaja = function (idPieza) {
+    if (idPieza > 0 ){
         throw "No esta en la caja";
     }
     else{
-       return this.estado[numPieza-1];
+       return this.estado[idPieza-1];
     }
 };
-Puzzle.prototype.getNumPosicionPiezaEnTablero = function (numPieza) {
-   if (numPieza < 0){
+Puzzle.prototype.getNumPosicionPiezaEnTablero = function (idPieza) {
+   if (idPieza < 0){
         throw "No esta en el tablero";
     }
     else{
-       return this.estado[numPieza-1];
+       return this.estado[idPieza-1];
     }
 };
 
@@ -117,8 +117,8 @@ Puzzle.prototype.isLibreHuecoTablero = function (posicion) {
     }
 };
 
-Puzzle.prototype.isPermitidoColocarPieza = function (numPieza, posicion) {
-    if (Puzzle.prototype.isColocadaPieza (numPieza, posicion) === true ){
+Puzzle.prototype.isPermitidoColocarPieza = function (idPieza, posicion) {
+    if (Puzzle.prototype.isColocadaPieza (idPieza, posicion) === true ){
         throw  "No se puede volver a colocar";
     }else{Puzzle.prototype.isLibreHuecoTablero(posicion);
     
@@ -126,44 +126,44 @@ Puzzle.prototype.isPermitidoColocarPieza = function (numPieza, posicion) {
     
 };
 
-Puzzle.prototype.isPermitidoQuitarPieza = function (numPieza) {
+Puzzle.prototype.isPermitidoQuitarPieza = function (idPieza) {
     var valido = false;
-    if (this.estado[numPieza-1] > 0) {
+    if (this.estado[idPieza-1] > 0) {
         valido = true;
     }
     return valido;
 };
 
-Puzzle.prototype.isColocadaPieza = function (numPieza, posicion) {
+Puzzle.prototype.isColocadaPieza = function (idPieza, posicion) {
     var valido = false;
-    if (this.estado[numPieza-1] === posicion) {
+    if (this.estado[idPieza-1] === posicion) {
         valido = true;
     }
     return valido;
 };
 
-Puzzle.prototype.isQuitadaPieza = function (numPieza) {
+Puzzle.prototype.isQuitadaPieza = function (idPieza) {
     var valido = false;
-    if (this.estado[numPieza-1] < 0) {
+    if (this.estado[idPieza-1] < 0) {
         valido = true;
     }
     return valido;
 };
 
-Puzzle.prototype.colocarPieza = function (numPieza, posicion) {
-    if (Puzzle.prototype.isPermitidoColocarPieza (numPieza, posicion) == true){
-    this.estado[numPieza-1] = posicion;
+Puzzle.prototype.colocarPieza = function (idPieza, posicion) {
+    if (Puzzle.prototype.isPermitidoColocarPieza (idPieza, posicion) == true){
+    this.estado[idPieza-1] = posicion;
     }else{
         throw "No se puede colocar la pieza";
     }
 };
 
-Puzzle.prototype.quitarPieza = function (numPieza) {
+Puzzle.prototype.quitarPieza = function (idPieza) {
     if (Puzzle.prototype.isPermitidoQuitarPieza== true){
 
     for (var i = 1; i <= this.numPiezas; i++) {
-        if (numPieza === i) {
-            this.estado[numPieza-1] = i*-1;
+        if (idPieza === i) {
+            this.estado[idPieza-1] = i*-1;
         }
     }
     }else{
@@ -177,3 +177,5 @@ Puzzle.prototype.reset = function () {
         reinicio--;
     }
 };
+
+
